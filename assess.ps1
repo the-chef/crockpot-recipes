@@ -1,6 +1,8 @@
 param($confidence = .6, $wager = 10, $year = 2018)
 $shit = invoke-webrequest -uri https://raw.githubusercontent.com/the-chef/crockpot-recipes/master/data2018.json
 $odds = invoke-webrequest -uri https://raw.githubusercontent.com/the-chef/crockpot-recipes/master/odds2018.csv
+$odds.content | Out-File $env:temp\odds.csv
+$odds = Import-Csv $env:temp\odds.csv
 $odds = ($odds.content | Import-csv)
 $json = $shit.content
 $global:correct = 0

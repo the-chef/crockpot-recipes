@@ -1,8 +1,8 @@
 param($confidence = .6, $wager = 10, $year = 2018)
-#$shit = invoke-webrequest -uri https://projects.fivethirtyeight.com/2018-mlb-predictions/data.json
-$shit = get-content "d:\opat\data2018.json"
-$odds = Import-csv d:\opat\odds2018.csv
-$json = $shit | convertfrom-json
+$shit = invoke-webrequest -uri https://raw.githubusercontent.com/the-chef/crockpot-recipes/master/data2018.json
+$odds = invoke-webrequest -uri https://raw.githubusercontent.com/the-chef/crockpot-recipes/master/odds2018.csv
+$odds = ($odds.content | Import-csv)
+$json = $shit.content
 $global:correct = 0
 $global:incorrect = 0
 $global:winnings = 0

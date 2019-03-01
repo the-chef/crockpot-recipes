@@ -3,7 +3,6 @@ $shit = invoke-webrequest -uri https://raw.githubusercontent.com/the-chef/crockp
 $odds = invoke-webrequest -uri https://raw.githubusercontent.com/the-chef/crockpot-recipes/master/odds2018.csv
 $odds.content | Out-File $env:temp\odds.csv
 $odds = Import-Csv $env:temp\odds.csv
-$odds = ($odds.content | Import-csv)
 $json = $shit.content
 $global:correct = 0
 $global:incorrect = 0

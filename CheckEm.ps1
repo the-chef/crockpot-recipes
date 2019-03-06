@@ -1,5 +1,7 @@
 param($confidence = .6, $wager = 10, $year = 2018, $team = "NA", $startdate = "NA", $stopdate = "NA")
-$odds = Import-Csv c:\opat\2018.csv
+$odds = invoke-webrequest -uri https://raw.githubusercontent.com/the-chef/crockpot-recipes/master/2018.csv
+$odds.content | Out-File $env:temp\odds.csv
+$odds = Import-Csv $env:temp\odds.csv
 $global:correct = 0
 $global:incorrect = 0
 $global:winnings = 0
